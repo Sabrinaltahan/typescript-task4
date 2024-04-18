@@ -1,0 +1,27 @@
+<div class="container">
+    <h1 class="title">Webbutveckling - Ramschema</h1>
+    <div class="search-container">
+        <h3 class="search-label">Sök:</h3>
+        <div class="search-input-container">
+            <input type="text" placeholder="Sök efter kurskod eller kursnamn" [(ngModel)]="searchTerm" (input)="filterCourses()" class="search-input">
+            <button (click)="resetFilter()" class="reset-button">Reset</button>
+        </div>
+    </div>
+
+    <table class="course-table">
+        <thead>
+            <tr>
+                <th (click)="sortBy('code')">Kurskod</th>
+                <th (click)="sortBy('coursename')">Namn</th>
+                <th (click)="sortBy('progression')">Progression</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let course of filteredCourses">
+                <td>{{ course.code }}</td>
+                <td>{{ course.coursename }}</td>
+                <td>{{ course.progression }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
